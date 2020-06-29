@@ -13,7 +13,7 @@
     <title>Последние задания</title>
   </head>
   <header>
-  	<nav class="navbar navbar-expand-lg navbar-light bg-primary text-white" >
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white" >
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,32 +29,20 @@
     </nav>
   </header>
   <body>
-  	<div class="jumbotron jumbotron-fluid bg-light text-dark">
-        <div class="container">
-            <h1 class="display-4 font-weight-normal">Последние задания</h1>
+    <main role="main">
+        <div class="container mt-5 mb-5">
+            <h1>Создать домашнее задание</h1><br>
+            <form method="POST" action="add_task" class="post-form"> {% csrf_token %}
+                <input type="text" name="title" placeholder="Название предмета" class="form-control"><br>
+                <textarea  type="text" name="body" placeholder="Домашнее задание" class="form-control"></textarea><br>
+                <input type="text" name="date" placeholder="Дата сдачи" class="form-control"><br>
+                <button type="submit" class="btn btn-outline-primary">Сохранить</button><br>
+            </form>
         </div>
-    </div>
-  	<div class="container mt-5">
-  		{%for i in data%}
-  		<div class="card bg-light mb-3" style="width: 60rem;">
-                <div class="card-header">{{i.title}}</div>
-                <div class="card-body">
-                    <div class="alert alert-primary" role="alert" >
-                        <h5 class="font-weight-normal">{{i.body}}</h5>
-                    </div>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                    	<form action="/tasks/{{i.pk}}"/>
-                        <button class="btn btn-outline-secondary m-1" type="submit">Подробнее</button>
-                      </form>
-                    </div>
-                </div>
-        </div>
-        {%endfor%}
-  	</div>
-    
+    </main>
   </body>
   <footer>
-  	<footer class="text-muted">
+    <footer class="text-muted">
         <br>
         <div class="container">
             <p class="float-right">
